@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <style>
+        div {
+            height: 200px;
+            width: 100%;
+            border: 1px solid black;
+            margin: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>AJAX 실습</h2>
+    <hr><br>
+
+    <h3>JavaScript를 활용한 AJAX 실습</h3>
+    <h3>1. Get 방식으로 서버 데이터 송수신 방법</h3>
+    <button onclick="ajaxTest1()">Get 방식 전송</button>
+    <div id="div1"></div>
+    <script>
+        function ajaxTest1() {
+            // 1. xhr 객체 생성
+            let xhr = new XMLHttpRequest();
+
+            // 2. onreadystatechange 이벤트 리스너 함수 생성 - 전송이 되고 메세지가 바뀐경우 동작하는 함수
+            xhr.onreadystatechange = function() {
+                // 서버로 부터 요청이 온 경우 시작되는 부
+                console.log("readystate : " + xhr.readyState);
+                console.log("status : " + xhr.status);
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) { // 200 : 성공, 404 : Not found, 500 : 서버 에러, 403 : forbidden
+                        let str = xhr.responseText;
+                        document.getElementById("div1").innerHTML = str;
+                    }
+                }
+            }
+
+            // 3. xhr open할 객체 셋팅
+            let url = "http://localhost/07_AJAX/jsAjax.do";
+            let getParameter = "?name=홍길동&age=23";
+
+            xhr.open("GET", url + getParameter, true);
+
+            // 4. xhr 전송
+            xhr.send();
+        }
+    </script>
+
+</body>
+
+</html>
