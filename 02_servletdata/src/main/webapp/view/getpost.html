@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>get방식 요청과 post방식 요청의 차이점</h1>
+	<fieldset>
+		<legend>get 방식 전송</legend>
+			<form action="/02_servletdata/login.do" method="get">
+				<div>id : <input type="text" name="userid" id="userid"></div>
+				<div>pw : <input type="text" name="pw" id="pw"></div>
+				<input type="submit" value="로그인">
+			</form>
+	</fieldset>
+	
+	<fieldset>
+		<legend>post 방식 전송</legend>
+			<form action="/02_servletdata/login.do" method="post">
+				<div>id : <input type="text" name="userid" id="userid"></div>
+				<div>pw : <input type="text" name="pw" id="pw"></div>
+				<input type="submit" value="로그인">
+			</form>
+	</fieldset>
+</body>
+</html>
